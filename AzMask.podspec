@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/alyztech/azmask-ios.git', :tag => s.version.to_s }
 
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '12.4'
 
   s.source_files = 'AzMask/Sources/**/*'
   

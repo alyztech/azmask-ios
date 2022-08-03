@@ -45,28 +45,33 @@ public class AzMask: AzMaskFormatter {
         var cleanResult = ""
         
         for mask in masks where index < text.endIndex {
-            if index < textCache.endIndex && textCache[index] == text[index] {
-                result.append(text[index])
-                if (mask.maskType == .regex) {
-                    cleanResult.append(text[index])
-                }
-                index = text.index(after: index)
-            } else if mask.maskType == .regex {
-                if let validatedIndex = validateRegex(text, mask: mask, index: index) {
-                    result.append(text[validatedIndex])
-                    cleanResult.append(text[validatedIndex])
-                    index = text.index(after: validatedIndex)
-                } else {
-                    return addToCache(result, cleanResult: cleanResult)
+            let currentChar = text[index]
+            if mask.maskType == .regex {
+                if index < textCache.endIndex && textCache[index] == currentChar {
+                    result.append(currentChar)
+                    cleanResult.append(currentChar)
+                    index = text.index(after: index)
+                } else if mask.maskType == .regex {
+                    if let validatedIndex = validateRegex(text, mask: mask, index: index) {
+                        result.append(text[validatedIndex])
+                        cleanResult.append(text[validatedIndex])
+                        index = text.index(after: validatedIndex)
+                    } else {
+                        return addToCache(result, cleanResult: cleanResult)
+                    }
                 }
             } else {
-                let lastTextIndex = text.index(after: index)
-                if lastTextIndex == text.endIndex && String(text[index]) == mask.value {
-                    let _ = result.dropLast()
-                    return addToCache(result, cleanResult: cleanResult)
-                } else {
-                    result.append(mask.value)
+                if String(currentChar) == mask.value {
+                    let lastTextIndex = text.index(after: index)
+                    if lastTextIndex == text.endIndex {
+                        let _ = result.dropLast()
+                        return addToCache(result, cleanResult: cleanResult)
+                    } else {
+                        index = text.index(after: index)
+                    }
                 }
+                result.append(mask.value)
+                
             }
         }
         return addToCache(result, cleanResult: cleanResult)

@@ -18,7 +18,6 @@
 // limitations under the License.
 //
 
-
 import XCTest
 @testable import AzMask
 
@@ -104,7 +103,7 @@ class AzMaskTests: XCTestCase {
         
         XCTAssertEqual(formattedValue, "711.776.380-11")
 
-        formattedValue = azMaskGroup.formatValue("07.442.741/0001-71")
+        formattedValue = azMaskGroup.formatValue("07.44a2.741/0001-71")
         
         XCTAssertEqual(formattedValue, "07.442.741/0001-71")
         

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AzMask'
-  s.version          = '0.4.0'
+  s.version          = '0.5.0'
   s.summary          = 'An input mask based on Regex.'
 
 # This description is used to generate tags and improve search results.

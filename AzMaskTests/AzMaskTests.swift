@@ -77,8 +77,6 @@ class AzMaskTests: XCTestCase {
             numberFactory.createMask(13)
         ]
         
-        let azCpfMask = AzMask(cpfMasks)
-        
         let cnpjMasks = [
             numberFactory.createMask(0),
             numberFactory.createMask(1),
@@ -99,10 +97,8 @@ class AzMaskTests: XCTestCase {
             numberFactory.createMask(16),
             numberFactory.createMask(17)
         ]
-        
-        let azCnpjMask = AzMask(cnpjMasks)
-        
-        let azMaskGroup = AzMaskGroup([azCpfMask, azCnpjMask])
+                
+        let azMaskGroup = AzMaskGroup([cpfMasks, cnpjMasks])
         
         var formattedValue = azMaskGroup.formatValue("a71177638011")
         

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AzMask'
-  s.version          = '0.3.0'
+  s.version          = '0.4.0'
   s.summary          = 'An input mask based on Regex.'
 
 # This description is used to generate tags and improve search results.
@@ -33,11 +33,4 @@ Pod::Spec.new do |s|
 
   s.source_files = 'AzMask/Sources/**/*'
   
-  # s.resource_bundles = {
-  #   'AzMask' => ['AzMask/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end

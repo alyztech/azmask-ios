@@ -26,9 +26,11 @@ public class AzMaskGroup: AzMaskFormatter {
     private var azMasks: [AzMask]
     var textCache = ""
 
-    public init(_ azMasks: [AzMask]) {
-        self.azMasks = azMasks.sorted (by: {
-            $0.masks.count < $1.masks.count
+    public init(_ masks: [[Mask]]) {
+        self.azMasks = masks.sorted (by: {
+            $0.count < $1.count
+        }).map({ masks in
+            AzMask(masks)
         })
     }
 
